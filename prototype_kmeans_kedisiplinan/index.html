@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sikap — Clustering Kedisiplinan Siswa</title>
+<style>
+:root{--bg:#f5f7fb;--panel:#fff;--ink:#172033;--muted:#68738a;--line:#e5eaf2;--blue:#3157d5;--blue2:#edf1ff;--green:#18845b;--amber:#a96508;--red:#b83b4b;--shadow:0 8px 30px rgba(30,45,80,.06)}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);font:14px/1.5 Inter,ui-sans-serif,system-ui,-apple-system,Segoe UI,Arial;color:var(--ink)}
+.layout{display:grid;grid-template-columns:240px 1fr;min-height:100vh}.sidebar{background:#172443;color:#fff;padding:25px 17px}.brand{display:flex;gap:11px;align-items:center;font-weight:800;font-size:18px;margin:0 10px 34px}.logo{background:#fff;color:#2447b8;border-radius:11px;width:35px;height:35px;display:grid;place-items:center;font-weight:900}.navlabel{color:#9eaccb;text-transform:uppercase;letter-spacing:1.2px;font-size:10px;margin:0 12px 9px}.nav{display:flex;align-items:center;gap:12px;color:#d5def3;padding:12px;border-radius:10px;margin:4px 0}.nav.active{background:#2c3d68;color:#fff}.nav span:first-child{width:20px;text-align:center}.sidefoot{position:sticky;top:80vh;margin:65px 10px 0;color:#aebbd6;font-size:12px}.main{padding:30px clamp(18px,4vw,48px);max-width:1500px;width:100%;margin:auto}.top{display:flex;justify-content:space-between;align-items:center;gap:15px;margin-bottom:28px}.eyebrow{color:var(--blue);font-weight:700;font-size:12px;letter-spacing:.5px;text-transform:uppercase}.top h1{font-size:28px;line-height:1.2;margin:5px 0 8px;letter-spacing:-.7px}.sub{color:var(--muted);margin:0}.pill{background:#e8f7ef;color:#14784e;border-radius:99px;padding:7px 11px;font-size:12px;font-weight:700;white-space:nowrap}.cards{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:15px;margin-bottom:20px}.card,.panel{background:var(--panel);border:1px solid var(--line);border-radius:15px;box-shadow:var(--shadow)}.card{padding:18px}.cardtop{display:flex;justify-content:space-between;color:var(--muted);font-size:12px}.metric{font-size:28px;font-weight:800;letter-spacing:-.8px;margin-top:10px}.hint{font-size:11px;color:var(--muted);margin-top:3px}.panel{padding:22px;margin-bottom:20px}.panelhead{display:flex;justify-content:space-between;align-items:flex-start;gap:15px;margin-bottom:17px}.panel h2{font-size:17px;margin:0 0 4px}.panel p{margin:0;color:var(--muted);font-size:12px}.actions{display:flex;gap:8px;flex-wrap:wrap}.btn{border:1px solid var(--line);background:#fff;color:var(--ink);padding:9px 13px;border-radius:9px;font-weight:700;cursor:pointer;font-size:12px}.btn.primary{background:var(--blue);border-color:var(--blue);color:#fff}.btn:hover{filter:brightness(.97)}.formgrid{display:grid;grid-template-columns:1.4fr repeat(4,1fr);gap:12px;align-items:end}.field label{display:block;color:#526079;font-size:12px;font-weight:700;margin-bottom:6px}.field input{width:100%;border:1px solid #dce3ef;border-radius:9px;padding:10px 11px;font:inherit;background:#fff;outline:none}.field input:focus{border-color:var(--blue);box-shadow:0 0 0 3px #3157d51b}.formactions{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-top:15px}.note{font-size:11px;color:var(--muted)}.message{display:none;padding:11px 13px;border-radius:9px;margin-top:13px;font-size:12px}.message.show{display:block}.message.error{background:#fff0f1;color:#a32b3a}.message.success{background:#edf9f2;color:#16764e}.tablewrap{overflow-x:auto}table{width:100%;border-collapse:collapse;white-space:nowrap}th{text-align:left;color:#6b7690;font-size:11px;font-weight:700;background:#f8faff}th,td{padding:12px 13px;border-bottom:1px solid var(--line)}td{font-size:12px}tbody tr:last-child td{border-bottom:0}.namecell{font-weight:700}.badge{display:inline-block;padding:4px 9px;border-radius:99px;font-size:11px;font-weight:800}.baik{color:#16764e;background:#e5f7ed}.cukup{color:#996000;background:#fff3d9}.kurang{color:#b02c3d;background:#ffe8eb}.empty{text-align:center;padding:32px;color:var(--muted)}.empty strong{display:block;color:#34405a;font-size:13px;margin-bottom:4px}.resultgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}.resultbox{border:1px solid var(--line);border-radius:12px;padding:15px}.resultbox .dot{width:9px;height:9px;border-radius:50%;display:inline-block;margin-right:7px}.resultbox strong{font-size:22px;display:block;margin:9px 0 2px}.resultbox small{color:var(--muted)}.footer{text-align:center;color:#8a94a8;font-size:11px;padding:10px}.status{font-size:11px;color:var(--muted)}@media(max-width:1000px){.cards{grid-template-columns:repeat(2,1fr)}.formgrid{grid-template-columns:repeat(2,1fr)}.formgrid .field:first-child{grid-column:1/-1}}@media(max-width:650px){.layout{grid-template-columns:1fr}.sidebar{padding:12px 16px}.brand{margin:0 5px 10px}.navlabel,.nav:not(.active),.sidefoot{display:none}.nav{padding:8px 10px;margin:0}.main{padding:20px 14px}.top{align-items:flex-start;flex-direction:column}.top h1{font-size:24px}.cards{gap:9px}.card{padding:13px}.metric{font-size:24px}.panel{padding:15px}.panelhead{flex-direction:column}.formgrid{grid-template-columns:1fr 1fr}.formgrid .field:first-child{grid-column:1/-1}.resultgrid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="layout">
+<aside class="sidebar">
+  <div class="brand"><div class="logo">S</div><div>Sikap<small style="display:block;color:#aebbd6;font-size:10px;font-weight:500">Analitik Kehadiran</small></div></div>
+  <div class="navlabel">Menu utama</div>
+  <div class="nav active"><span>▦</span> Ringkasan & Data</div>
+  <div class="nav"><span>◉</span> Clustering K-Means</div>
+  <div class="nav"><span>▤</span> Laporan Hasil</div>
+  <div class="sidefoot">Prototype akademik<br>Algoritma K-Means · 3 cluster</div>
+</aside>
+<main class="main">
+  <header class="top">
+    <div><div class="eyebrow">Dashboard analitik siswa</div><h1>Clustering Kedisiplinan Siswa</h1><p class="sub">Kelola data kehadiran dan kelompokkan siswa berdasarkan pola absensi.</p></div>
+    <span class="pill">● Prototype aktif</span>
+  </header>
+  <section class="cards">
+    <div class="card"><div class="cardtop"><span>Total siswa</span><span>♙</span></div><div class="metric" id="mTotal">0</div><div class="hint">Data dalam tabel</div></div>
+    <div class="card"><div class="cardtop"><span>Kedisiplinan baik</span><span>↗</span></div><div class="metric" id="mBaik">0</div><div class="hint">Berdasarkan hasil cluster</div></div>
+    <div class="card"><div class="cardtop"><span>Kedisiplinan cukup</span><span>◇</span></div><div class="metric" id="mCukup">0</div><div class="hint">Berdasarkan hasil cluster</div></div>
+    <div class="card"><div class="cardtop"><span>Kedisiplinan kurang</span><span>!</span></div><div class="metric" id="mKurang">0</div><div class="hint">Berdasarkan hasil cluster</div></div>
+  </section>
+  <section class="panel">
+    <div class="panelhead"><div><h2>Input data absensi</h2><p>Masukkan rekap jumlah hadir, izin, sakit, dan alfa setiap siswa.</p></div><div class="actions"><button class="btn" id="demoBtn">Muat data contoh</button><button class="btn" id="clearBtn">Hapus semua</button></div></div>
+    <form id="studentForm">
+      <div class="formgrid">
+        <div class="field"><label for="studentName">Nama siswa</label><input id="studentName" placeholder="Contoh: Siswa 01" maxlength="60" required></div>
+        <div class="field"><label for="hadir">Hadir (H)</label><input id="hadir" type="number" min="0" max="365" value="20" required></div>
+        <div class="field"><label for="izin">Izin (I)</label><input id="izin" type="number" min="0" max="365" value="1" required></div>
+        <div class="field"><label for="sakit">Sakit (S)</label><input id="sakit" type="number" min="0" max="365" value="1" required></div>
+        <div class="field"><label for="alfa">Alfa (A)</label><input id="alfa" type="number" min="0" max="365" value="0" required></div>
+      </div>
+      <div class="formactions"><span class="note">Data disimpan di browser ini saja (localStorage).</span><button class="btn primary" type="submit">＋ Tambahkan siswa</button></div>
+      <div id="formMsg" class="message" role="status"></div>
+    </form>
+  </section>
+  <section class="panel">
+    <div class="panelhead"><div><h2>Data kehadiran siswa</h2><p>Jalankan clustering untuk menghitung kelompok berdasarkan atribut absensi.</p></div><div class="actions"><button class="btn primary" id="clusterBtn">Jalankan K-Means</button><button class="btn" id="csvBtn">Ekspor CSV</button></div></div>
+    <div class="tablewrap"><table><thead><tr><th>Nama siswa</th><th>Hadir</th><th>Izin</th><th>Sakit</th><th>Alfa</th><th>Hasil cluster</th><th>Aksi</th></tr></thead><tbody id="studentRows"></tbody></table><div class="empty" id="emptyState"><strong>Belum ada data siswa</strong>Tambahkan data secara manual atau gunakan data contoh untuk mencoba prototype.</div></div>
+    <div id="clusterMsg" class="message" role="status"></div>
+  </section>
+  <section class="panel">
+    <div class="panelhead"><div><h2>Ringkasan hasil clustering</h2><p>Jumlah siswa pada setiap kategori setelah proses K-Means berhasil dijalankan.</p></div><span class="status" id="runStatus">Belum dijalankan</span></div>
+    <div class="resultgrid">
+      <div class="resultbox"><span class="dot" style="background:#18845b"></span>Kedisiplinan baik<strong id="rBaik">—</strong><small>Cluster dengan pola kehadiran relatif lebih baik</small></div>
+      <div class="resultbox"><span class="dot" style="background:#d99522"></span>Kedisiplinan cukup<strong id="rCukup">—</strong><small>Cluster dengan pola kehadiran menengah</small></div>
+      <div class="resultbox"><span class="dot" style="background:#c84858"></span>Kedisiplinan kurang<strong id="rKurang">—</strong><small>Cluster dengan pola kehadiran relatif kurang</small></div>
+    </div>
+    <p style="margin-top:15px">Catatan: label kategori ditentukan dengan mengurutkan centroid berdasarkan skor kedisiplinan sederhana: hadir lebih tinggi dan izin, sakit, serta alfa lebih rendah. Hasil ini merupakan alat bantu analisis, bukan penilaian mutlak terhadap siswa.</p>
+  </section>
+  <div class="footer">SIKAP · Prototype pembelajaran · Data contoh bukan data siswa nyata</div>
+</main>
+</div>
+<script>
+const KEY='sikap_students_v1';
+let students=[];
+let clustered=false;
+const $=id=>document.getElementById(id);
+function showMsg(id,text,type='success'){const el=$(id);el.textContent=text;el.className='message show '+type}
+function hideMsg(id){$(id).className='message'}
+function save(){try{localStorage.setItem(KEY,JSON.stringify(students))}catch(e){}}
+function load(){try{students=JSON.parse(localStorage.getItem(KEY)||'[]');if(!Array.isArray(students))students=[]}catch(e){students=[]}}
+function render(){
+ const body=$('studentRows');body.innerHTML='';
+ $('emptyState').style.display=students.length?'none':'block';
+ students.forEach((s,i)=>{
+  const tr=document.createElement('tr');
+  const cells=[['name',s.name],['h',s.hadir],['i',s.izin],['s',s.sakit],['a',s.alfa]];
+  cells.forEach(([k,v])=>{const td=document.createElement('td');td.textContent=v;if(k==='name')td.className='namecell';tr.appendChild(td)});
+  const cl=document.createElement('td');if(s.cluster){const b=document.createElement('span');b.className='badge '+s.cluster.toLowerCase();b.textContent=s.cluster;cl.appendChild(b)}else cl.textContent='Belum diproses';tr.appendChild(cl);
+  const act=document.createElement('td');const del=document.createElement('button');del.className='btn';del.textContent='Hapus';del.onclick=()=>{students.splice(i,1);clustered=false;save();render();showMsg('clusterMsg','Data siswa dihapus. Jalankan clustering kembali untuk memperbarui hasil.','success')};act.appendChild(del);tr.appendChild(act);body.appendChild(tr);
+ });
+ $('mTotal').textContent=students.length;
+ $('mBaik').textContent=students.filter(s=>s.cluster==='Baik').length;
+ $('mCukup').textContent=students.filter(s=>s.cluster==='Cukup').length;
+ $('mKurang').textContent=students.filter(s=>s.cluster==='Kurang').length;
+ if(!clustered){$('rBaik').textContent='—';$('rCukup').textContent='—';$('rKurang').textContent='—';$('runStatus').textContent='Belum dijalankan'}
+}
+$('studentForm').addEventListener('submit',e=>{
+ e.preventDefault();hideMsg('formMsg');
+ const name=$('studentName').value.trim();
+ const vals=['hadir','izin','sakit','alfa'].map(id=>Number($(id).value));
+ if(!name){showMsg('formMsg','Nama siswa wajib diisi.','error');return}
+ if(vals.some(v=>!Number.isInteger(v)||v<0||v>365)){showMsg('formMsg','Semua jumlah absensi harus berupa bilangan bulat antara 0 dan 365.','error');return}
+ if(vals.reduce((a,b)=>a+b,0)===0){showMsg('formMsg','Masukkan minimal satu jumlah kehadiran atau ketidakhadiran.','error');return}
+ if(students.some(s=>s.name.toLowerCase()===name.toLowerCase())){showMsg('formMsg','Nama siswa sudah ada. Gunakan nama yang berbeda.','error');return}
+ students.push({id:Date.now()+Math.random(),name,hadir:vals[0],izin:vals[1],sakit:vals[2],alfa:vals[3],cluster:null});
+ clustered=false;save();render();$('studentName').value='';showMsg('formMsg','Data siswa berhasil ditambahkan.','success');
+});
+function sample(){
+ students=[
+ {name:'Siswa 01',hadir:24,izin:0,sakit:0,alfa:0},{name:'Siswa 02',hadir:23,izin:1,sakit:0,alfa:0},
+ {name:'Siswa 03',hadir:22,izin:1,sakit:1,alfa:0},{name:'Siswa 04',hadir:22,izin:0,sakit:2,alfa:0},
+ {name:'Siswa 05',hadir:20,izin:2,sakit:1,alfa:1},{name:'Siswa 06',hadir:19,izin:2,sakit:2,alfa:1},
+ {name:'Siswa 07',hadir:17,izin:3,sakit:2,alfa:2},{name:'Siswa 08',hadir:16,izin:2,sakit:3,alfa:3},
+ {name:'Siswa 09',hadir:14,izin:3,sakit:2,alfa:5},{name:'Siswa 10',hadir:12,izin:3,sakit:3,alfa:6},
+ {name:'Siswa 11',hadir:10,izin:4,sakit:3,alfa:7},{name:'Siswa 12',hadir:8,izin:4,sakit:4,alfa:8}
+ ].map((s,i)=>({...s,id:Date.now()+i,cluster:null}));
+ clustered=false;save();render();showMsg('clusterMsg','Data contoh berhasil dimuat. Data ini hanya untuk demonstrasi, bukan data penelitian asli.','success');
+}
+$('demoBtn').onclick=sample;
+$('clearBtn').onclick=()=>{if(!students.length){showMsg('clusterMsg','Tidak ada data untuk dihapus.','error');return}if(confirm('Hapus semua data siswa dari prototype ini?')){students=[];clustered=false;save();render();showMsg('clusterMsg','Semua data telah dihapus.','success')}};
+function dist(a,b){return Math.sqrt(a.reduce((sum,v,i)=>sum+(v-b[i])**2,0))}
+function kmeans(data,k=3,maxIter=100){
+ if(data.length<k)throw new Error('Minimal ada 3 data siswa untuk menjalankan clustering dengan 3 cluster.');
+ const points=data.map(s=>[s.hadir,s.izin,s.sakit,s.alfa]);
+ // K-means++-like deterministic farthest initialization for a repeatable demo
+ let centroids=[points[0].slice()];
+ while(centroids.length<k){
+  let best=-1,bestD=-1;
+  points.forEach(p=>{const md=Math.min(...centroids.map(c=>dist(p,c)));if(md>bestD){bestD=md;best=p}});
+  centroids.push(best.slice());
+ }
+ let labels=new Array(points.length).fill(-1);
+ for(let iter=0;iter<maxIter;iter++){
+  let changed=false;
+  points.forEach((p,i)=>{let idx=0,md=Infinity;centroids.forEach((c,j)=>{const d=dist(p,c);if(d<md){md=d;idx=j}});if(labels[i]!==idx){labels[i]=idx;changed=true}});
+  const sums=Array.from({length:k},()=>[0,0,0,0]),counts=Array(k).fill(0);
+  points.forEach((p,i)=>{counts[labels[i]]++;p.forEach((v,j)=>sums[labels[i]][j]+=v)});
+  centroids=centroids.map((c,j)=>counts[j]?sums[j].map(v=>v/counts[j]):c);
+  if(!changed)break;
+ }
+ // Label cluster by centroid score: more presence and fewer absences => better.
+ const scores=centroids.map(c=>c[0]-(c[1]+c[2]+c[3]));
+ const order=[0,1,2].sort((a,b)=>scores[b]-scores[a]);
+ const labelsByIndex={};labelsByIndex[order[0]]='Baik';labelsByIndex[order[1]]='Cukup';labelsByIndex[order[2]]='Kurang';
+ return {labels,centroids,labelsByIndex,iterations:maxIter};
+}
+$('clusterBtn').onclick=()=>{
+ hideMsg('clusterMsg');
+ if(students.length<3){showMsg('clusterMsg','Belum cukup data. Tambahkan minimal 3 siswa atau klik “Muat data contoh”.','error');return}
+ try{
+  const result=kmeans(students,3);
+  students=students.map((s,i)=>({...s,cluster:result.labelsByIndex[result.labels[i]]}));
+  clustered=true;save();render();
+  $('rBaik').textContent=students.filter(s=>s.cluster==='Baik').length+' siswa';
+  $('rCukup').textContent=students.filter(s=>s.cluster==='Cukup').length+' siswa';
+  $('rKurang').textContent=students.filter(s=>s.cluster==='Kurang').length+' siswa';
+  $('runStatus').textContent='Clustering selesai';
+  showMsg('clusterMsg','Proses K-Means selesai. Label kategori diurutkan berdasarkan skor centroid; periksa kembali kesesuaiannya sebelum digunakan dalam penelitian.','success');
+ }catch(err){showMsg('clusterMsg',err.message,'error')}
+};
+$('csvBtn').onclick=()=>{
+ if(!students.length){showMsg('clusterMsg','Tidak ada data untuk diekspor.','error');return}
+ const rows=[['Nama siswa','Hadir','Izin','Sakit','Alfa','Cluster'],...students.map(s=>[s.name,s.hadir,s.izin,s.sakit,s.alfa,s.cluster||'Belum diproses'])];
+ const csv=rows.map(r=>r.map(v=>'"'+String(v).replace(/"/g,'""')+'"').join(',')).join('\r\n');
+ const blob=new Blob(['\ufeff'+csv],{type:'text/csv;charset=utf-8;'}),url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download='data_clustering_kedisiplinan.csv';a.click();URL.revokeObjectURL(url);
+};
+load();render();
+</script>
+</body>
+</html>
